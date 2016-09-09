@@ -44,16 +44,12 @@ class evade_fw:
 		os.system('clear')
 		print('What IP, IP-range (CIDR or range of xxx-xxx i.e. 192.168.1.1-254, or domain would you like to scan? ')
 		ip = raw_input('IP, CIDR, Range, or Domain: ')
-		print(
-		"Now going to run nmap scan -D RND:10,192.168.1.103,10.0.0.129,ME= and version detection options, saving output to decoy-" + ip + ".nmap and decoy-" + ip + ".xml for later parsing.")
-		os.system(
-			'sudo nmap -D RND:10,192.168.1.103,10.0.0.129,ME -sV -Pn -p1-65535 --stylesheet=nmap.xsl -oX decoy-' + ip + '.xml -oN decoy-' + ip + '.nmap ' + ip)
+		print("Now going to run nmap scan -D RND:10,192.168.1.103,10.0.0.129,ME -sV -Pn and version detection options, saving output to decoy-" + ip + ".nmap and decoy-" + ip + ".xml for later parsing.")
+		os.system('sudo nmap -D RND:10,192.168.1.103,10.0.0.129,ME -sV -Pn --stylesheet=nmap.xsl -oX decoy-' + ip + '.xml -oN decoy-' + ip + '.nmap ' + ip)
 		os.system('clear')
-		print(
-		"Scan ran against " + ip + " and saved to current directory under decoy-" + ip + ".nmap and decoy-" + ip + ".xml for your parsing pleasure!")
+		print("Scan ran against " + ip + " and saved to current directory under decoy-" + ip + ".nmap and decoy-" + ip + ".xml for your parsing pleasure!")
 		print("")
-		print(
-		"Scan against " + ip + " ran, now giving you the ports that were open and their services running on them...")
+		print("Scan against " + ip + " ran, now giving you the ports that were open and their services running on them...")
 		print("Open ports tcp/udp with software versions are...")
 		print("")
 		os.system('cat decoy-' + ip + '.nmap | grep open | grep tcp||udp')
@@ -66,43 +62,17 @@ class evade_fw:
 		os.system('clear')
 		print('What IP, IP-range (CIDR or range of xxx-xxx i.e. 192.168.1.1-254, or domain would you like to scan? ')
 		ip = raw_input('IP, CIDR, Range, or Domain: ')
-		print('What IP address would you like to be spoofed as? ')
+		print('What ports are you wanting to scan against? Can be entered as xxx-yyy, x,y,z, or a single port')
 		spoofed_ip = raw_input('Spoofed IP Address: ')
-		print(
-			"Now going to run nmap scan with -Pn -sV -A -S " + spoofed_ip + " options, saving output to spoofed-" + ip + ".nmap and spoofed-" + ip + ".xml for later parsing.")
-		os.system(
-			'sudo nmap -Pn -sV -A --stylesheet=nmap.xsl -oX spoofed-' + ip + '.xml -oN spoofed-' + ip + '.nmap ' + ip)
+		print("Now going to run nmap scan with -Pn -sV -A -S " + spoofed_ip + " options, saving output to spoofed-" + ip + ".nmap and spoofed-" + ip + ".xml for later parsing.")
+		os.system('sudo nmap -Pn -sV -A -S ' + spoofed_ip + ' --stylesheet=nmap.xsl -oX spoofed-' + ip + '.xml -oN spoofed-' + ip + '.nmap ' + ip)
 		os.system('clear')
-		print(
-			"Scan ran against " + ip + " and saved to current directory under spoofed-" + ip + ".nmap and spoofed-" + ip + ".xml for your parsing pleasure!")
+		print("Scan ran against " + ip + " and saved to current directory under spoofed-" + ip + ".nmap and spoofed-" + ip + ".xml for your parsing pleasure!")
 		print("")
-		print(
-		"Scan against " + ip + " ran, now giving you the ports that were open and their services running on them...")
+		print("Scan against " + ip + " ran, now giving you the ports that were open and their services running on them...")
 		print("Open ports tcp/udp with software versions are...")
 		print("")
 		os.system('cat spoofed-' + ip + '.nmap | grep open | grep tcp||udp')
-		print("")
-		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
-		print("")
-		raw_input("Press any key to continue...")
-
-	def stealth_scan(self):
-		os.system('clear')
-		print('What IP, IP-range (CIDR or range of xxx-xxx i.e. 192.168.1.1-254, or domain would you like to scan? ')
-		ip = raw_input('IP, CIDR, Range, or Domain: ')
-		print(
-			"Now going to run nmap scan with -Pn -sV -A options, saving output to stealth-scan-" + ip + ".nmap and stealth-scan-" + ip + ".xml for later parsing.")
-		os.system(
-			'sudo nmap --stylesheet=nmap.xsl -oX stealth-scan-' + ip + '.xml -oN stealth-scan-' + ip + '.nmap ' + ip)
-		os.system('clear')
-		print(
-			"Scan ran against " + ip + " and saved to current directory under stealth-scan-" + ip + ".nmap and stealth-scan-" + ip + ".xml for your parsing pleasure!")
-		print("")
-		print(
-		"Scan against " + ip + " ran, now giving you the ports that were open and their services running on them...")
-		print("Open ports tcp/udp with software versions are...")
-		print("")
-		os.system('cat stealth-scan-' + ip + '.nmap | grep open | grep tcp||udp')
 		print("")
 		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
 		print("")
@@ -112,16 +82,12 @@ class evade_fw:
 		os.system('clear')
 		print('What IP, IP-range (CIDR or range of xxx-xxx i.e. 192.168.1.1-254, or domain would you like to scan? ')
 		ip = raw_input('IP, CIDR, Range, or Domain: ')
-		print(
-			"Now going to run nmap scan with -Pn -sV -A options, saving output to fragged-scan-" + ip + ".nmap and fragged-scan-" + ip + ".xml for later parsing.")
-		os.system(
-			'sudo nmap -f --stylesheet=nmap.xsl -oX fragged-scan-' + ip + '.xml -oN fragged-scan-' + ip + '.nmap ' + ip)
+		print("Now going to run nmap scan with -f option, saving output to fragged-scan-" + ip + ".nmap and fragged-scan-" + ip + ".xml for later parsing.")
+		os.system('sudo nmap -f --stylesheet=nmap.xsl -oX fragged-scan-' + ip + '.xml -oN fragged-scan-' + ip + '.nmap ' + ip)
 		os.system('clear')
-		print(
-			"Scan ran against " + ip + " and saved to current directory under fragged-scan-" + ip + ".nmap and fragged-scan-" + ip + ".xml for your parsing pleasure!")
+		print("Scan ran against " + ip + " and saved to current directory under fragged-scan-" + ip + ".nmap and fragged-scan-" + ip + ".xml for your parsing pleasure!")
 		print("")
-		print(
-		"Scan against " + ip + " ran, now giving you the ports that were open and their services running on them...")
+		print("Scan against " + ip + " ran, now giving you the ports that were open and their services running on them...")
 		print("Open ports tcp/udp with software versions are...")
 		print("")
 		os.system('cat fragged-scan-' + ip + '.nmap | grep open | grep tcp||udp')
@@ -130,10 +96,8 @@ class evade_fw:
 		print("")
 		raw_input("Press any key to continue...")
 
-
 def xsl_file():
-	print(
-	"When, if asked, please use your password for copying over the nmap.xsl stylesheet to your current directory, for saved xml files to work correctly")
+	print("When, if asked, please use your password for copying over the nmap.xsl stylesheet to your current directory, for saved xml files to work correctly")
 	os.system('sudo cp /usr/local/share/nmap/nmap.xsl .')
 	print("")
 	print("All done, happy hacking!")
@@ -144,16 +108,14 @@ def basic_loud_scan():
 	os.system('clear')
 	print('What IP, IP-range (CIDR or range of xxx-xxx i.e. 192.168.1.1-254, or domain would you like to scan? ')
 	ip = raw_input('IP, CIDR, Range, or Domain: ')
-	print(
-		"Now going to run nmap scan with -Pn -sV -A options, saving output to loud-scan-" + ip + ".nmap and loud-scan-" + ip + ".xml for later parsing.")
-	os.system(
-		'sudo nmap -Pn -sV -A -T4 --stylesheet=nmap.xsl -oX loud-scan-' + ip + '.xml -oN loud-scan-' + ip + '.nmap ' + ip)
+	print('What ports are you wanting to scan against? Can be entered as xxx-yyy, x,y,z, or a single port')
+	ports = raw_input('Ports: ')
+	print("Now going to run nmap scan with -Pn -sV -A -T4 options, saving output to loud-scan-" + ip + ".nmap and loud-scan-" + ip + ".xml for later parsing.")
+	os.system('sudo nmap -Pn -sV -A -T4 --stylesheet=nmap.xsl -oX loud-scan-' + ip + '.xml -oN loud-scan-' + ip + '.nmap ' + ip)
 	os.system('clear')
-	print(
-		"Scan ran against " + ip + " and saved to current directory under loud-scan-" + ip + ".nmap and loud-scan-" + ip + ".xml for your parsing pleasure!")
+	print("Scan ran against " + ip + " and saved to current directory under loud-scan-" + ip + ".nmap and loud-scan-" + ip + ".xml for your parsing pleasure!")
 	print("")
-	print(
-		"Scan against " + ip + " ran, now giving you the ports that were open and their services running on them...")
+	print("Scan against " + ip + " ran, now giving you the ports that were open and their services running on them...")
 	print("Open ports tcp/udp with software versions are...")
 	print("")
 	os.system('cat loud-scan-' + ip + '.nmap | grep open | grep tcp||udp')
@@ -161,6 +123,7 @@ def basic_loud_scan():
 	print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
 	print("")
 	raw_input("Press any key to continue...")
+
 
 evade = evade_fw()
 
@@ -187,9 +150,9 @@ def main():  # menu goes here
 	return
 
 
+# Menu for evading firewall scans
 def fw_main():  # menu goes here
-	opt_list = [evade.stealth_scan,
-				evade.fragmented_scan,
+	opt_list = [evade.fragmented_scan,
 				evade.spoof_ip,
 				evade.decoy_address,
 				main
@@ -198,11 +161,10 @@ def fw_main():  # menu goes here
 	while (True):
 		os.system('clear')
 		print("SELECT OPTION: ")
-		print("1\tStealth Scan")
-		print("2\tScan with Fragmented Packets")
-		print("3\tScan with Spoofed IP Address")
-		print("4\tScan using Random Decoy Addresses")
-		print("5\tMain Menu")
+		print("1\tScan with Fragmented Packets")
+		print("2\tScan with Spoofed IP Address")
+		print("3\tScan using Random Decoy Addresses")
+		print("4\tMain Menu")
 		opt_choice = int(raw_input("Selection: "))
 		os.system('clear')
 		opt_choice -= 1

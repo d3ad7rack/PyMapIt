@@ -1,4 +1,5 @@
-****** PyMapIt *****
+#   ****** PyMapIt *****
+
 A simple program that I had made that basically does all the dirty work of
 trying to figure out what options are needed for an nmap scan for those
 just getting into network security and don't know what all the switches/options
@@ -13,7 +14,3 @@ to be worked out. Specifically the Exit option of the main menu. I'm still learn
 about Python and how to do certain things, so this program is still a work in progress.
 
 I'd love to hear what you think about it.
-
-# v0.1 - 
-# Started base program off with a menu for a basic scan that you run nmap with no 
-# options selected, as well as a couple different scans aimed at evading firewalls.

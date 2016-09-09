@@ -124,6 +124,9 @@ def basic_loud_scan():
 	print("")
 	raw_input("Press any key to continue...")
 
+def exit():
+	sys.exit()
+
 
 evade = evade_fw()
 
@@ -131,8 +134,8 @@ evade = evade_fw()
 def main():  # menu goes here
 	opt_list = [xsl_file,
 				basic_loud_scan,
-				fw_main
-				#exit
+				fw_main,
+				exit
 				]
 
 	while (True):
@@ -141,7 +144,7 @@ def main():  # menu goes here
 		print("1\tCopy nmap.xsl file to present directory for proper saving of xml files (Needs to be done)")
 		print("2\tBasic, Loud Scan")
 		print("3\tEvade Firewalls")
-		print("X\tExit")
+		print("4\tExit")
 		opt_choice = int(raw_input("Selection: "))
 		os.system('clear')
 		opt_choice -= 1

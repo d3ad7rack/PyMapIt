@@ -14,3 +14,17 @@ to be worked out. Specifically the Exit option of the main menu. I'm still learn
 about Python and how to do certain things, so this program is still a work in progress.
 
 I'd love to hear what you think about it.
+
+
+
+# ***** Usage *****
+
+To use the program all you need to do is issue: python pymapit.py
+
+The script will ask for your sudo password when it gets to that point in the script,
+but you do not need to run the script as sudo.
+
+
+# ***** Pre-reqs *****
+
+The only thing that is needed to be installed for the script to work correctly is nmap

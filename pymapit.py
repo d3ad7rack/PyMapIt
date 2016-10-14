@@ -57,7 +57,7 @@ class evade_fw:
 		print("")
 		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
 		print("")
-		raw_input("Press any key to continue...")
+		raw_input("Press 'Enter' key to continue...")
 
 	def spoof_ip(self):
 		os.system('clear')
@@ -87,7 +87,7 @@ class evade_fw:
 		print("")
 		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
 		print("")
-		raw_input("Press any key to continue...")
+		raw_input("Press 'Enter' key to continue...")
 
 	def fragmented_scan(self):
 		os.system('clear')
@@ -115,15 +115,102 @@ class evade_fw:
 		print("")
 		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
 		print("")
-		raw_input("Press any key to continue...")
+		raw_input("Press 'Enter' key to continue...")
+
+class safe_vuln_check:
+	def http(self):
+		os.system('clear')
+		print('What IP, IP-range (range of xxx-xxx i.e. 192.168.1.1-254, or domain would you like to scan for HTTP(S) discoveries / vulnerabilities? ')
+		ip = raw_input('IP, Range, or Domain: ')
+		print('')
+		print('Now scanning ports 80 and 443 on ' + ip)
+		os.system('sudo nmap -p80,443 -sV --script=http-cross-domain-policy,http-frontpage-login,http-git,http-internal-ip-disclosure,http-slowloris-check,http-trace,http-vmware-path-vuln,http-vuln-cve2010-0738,http-vuln-cve2011-3192,http-vuln-cve2014-2126,http-vuln-cve2014-2127,http-vuln-cve2014-2128,http-vuln-cve2014-2129,http-vuln-cve2015-1635,ssl-ccs-injection -d --script-args http.domain-lookup=true --stylesheet nmap.xsl -oX http-safe-vuln-scan-' + ip + '.xml -oN http-safe-vuln-scan-' + ip + '.nmap ' + ip)
+		os.system('clear')
+		print("Scan ran against " + ip + " and saved to current directory under http-safe-vuln-scan-" + ip + ".xml and http-safe-vuln-scan-" + ip + ".nmap for your parsing pleasure!")
+		print("")
+		print("Safe discovery / vulnerability scan ran against " + ip + " now opening resulting xml report file in firefox for easy readability")
+		os.system("firefox http-safe-vuln-scan-" + ip + ".xml")
+		print("")
+		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
+		print("")
+		raw_input("Press 'Enter' key to continue...")
+
+	def ssh(self):
+		os.system('clear')
+		print('What IP, IP-range (range of xxx-xxx i.e. 192.168.1.1-254, or domain would you like to scan for SSH discoveries / vulnerabilities? ')
+		ip = raw_input('IP, Range, or Domain: ')
+		print('')
+		print('Now scanning port 22 on ' + ip)
+		os.system('sudo nmap -p22 -sV --script=ssh-hostkey,ssh2-enum-algos,sshv1 --script-args ssh_hostkey=full --stylesheet nmap.xsl -oX ssh-safe-vuln-scan-' + ip + '.xml -oN ssh-safe-vuln-scan-' + ip + '.nmap ' + ip)
+		os.system('clear')
+		print("Scan ran against " + ip + " and saved to current directory under ssh-safe-vuln-scan-" + ip + ".xml and ssh-safe-vuln-scan-" + ip + ".nmap for your parsing pleasure!")
+		print("")
+		print("Safe discovery / vulnerability scan ran against " + ip + " now opening resulting xml report file in firefox for easy readability")
+		os.system("firefox ssh-safe-vuln-scan-" + ip + ".xml")
+		print("")
+		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
+		print("")
+		raw_input("Press 'Enter' key to continue...")
+
+	def ftp(self):
+		os.system('clear')
+		print('What IP, IP-range (range of xxx-xxx i.e. 192.168.1.1-254, or domain would you like to scan for (S)FTP discoveries / vulnerabilities? ')
+		ip = raw_input('IP, Range, or Domain: ')
+		print('')
+		print('Now scanning port 21 on ' + ip)
+		os.system('sudo nmap -p21 -sV --script=ftp-anon,ftp-bounce --stylesheet nmap.xsl -oX ftp-safe-vuln-scan-' + ip + '.xml -oN ftp-safe-vuln-scan-' + ip + '.nmap ' + ip)
+		os.system('clear')
+		print("Scan ran against " + ip + " and saved to current directory under ftp-safe-vuln-scan-" + ip + ".xml and ftp-safe-vuln-scan-" + ip + ".nmap for your parsing pleasure!")
+		print("")
+		print("Safe discovery / vulnerability scan ran against " + ip + " now opening resulting xml report file in firefox for easy readability")
+		os.system('firefox ftp-safe-vuln-scan-' + ip + '.xml')
+		print("")
+		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
+		print("")
+		raw_input("Press 'Enter' key to continue...")
+
+	def irc(self):
+		os.system('clear')
+		print('What IP, IP-range (range of xxx-xxx i.e. 192.168.1.1-254, or domain wold you like to scan for IRC discoveries / vulnerabilities? ')
+		ip = raw_input('IP, Range, or Domain: ')
+		print('')
+		print('Now scanning ports 6660-6669,7000, and 8001 on ' + ip)
+		os.system('sudo nmap -p6660-6669,7000,8001 -sV --script=irc-botnet-channels,irc-info --stylesheet nmap.xsl -oX irc-safe-vuln-scan-' + ip + '.xml -oN irc-safe-vuln-scan-' + ip + '.nmap ' + ip)
+		os.system('clear')
+		print("Scan ran against " + ip + " and saved to current directory under irc-safe-vuln-scan-" + ip + ".xml and irc-safe-vuln-scan-" + ip + ".nmap for your parsing pleasure!")
+		print("")
+		print("Safe discovery / vulnerability scan ran against " + ip + " now opening resulting xml report file in firefox for easy readability")
+		os.system('firefox irc-safe-vuln-scan-' + ip + '.xml')
+		print("")
+		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
+		print("")
+		raw_input("Press 'Enter' key to continue...")
+
+class unsafe_vuln_check:
+	def http(self):
+		os.system('clear')
+		print('What IP, IP-range (range of xxx-xxx i.e. 192.168.1.1-254, or domain would you like to scan for HTTP(S) discoveries / vulnerabilities? ')
+		ip = raw_input('IP, Range, or Domain: ')
+		print('')
+		print('Now scanning ports 80 and 443 on ' + ip)
+		os.system('sudo nmap -p80,443 -sV --script= --stylesheet nmap.xsl -oX http-safe-vuln-scan-' + ip + '.xml -oN http-safe-vuln-scan-' + ip + '.nmap ' + ip)
+		os.system('clear')
+		print("Scan ran against " + ip + " and saved to current directory under http-safe-vuln-scan-" + ip + ".xml and http-safe-vuln-scan-" + ip + ".nmap for your parsing pleasure!")
+		print("")
+		print("Safe discovery / vulnerability scan ran against " + ip + " now opening resulting xml report file in firefox for easy readability")
+		os.system("firefox http-safe-vuln-scan-" + ip + ".xml")
+		print("")
+		print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
+		print("")
+		raw_input("Press 'Enter' key to continue...")
 
 def xsl_file():
 	print("When, if asked, please use your password for copying over the nmap.xsl stylesheet to your current directory, for saved xml files to work correctly")
-	os.system('sudo cp /usr/local/share/nmap/nmap.xsl .')
+	os.system('sudo cp /usr/share/nmap/nmap.xsl .')
 	print("")
 	print("All done, happy hacking!")
 	print("")
-	raw_input("Press any key to continue...")
+	raw_input("Press 'Enter' key to continue...")
 
 def no_options():
 	os.system('clear')
@@ -151,7 +238,7 @@ def no_options():
 	print("")
 	print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
 	print("")
-	raw_input("Press any key to continue...")
+	raw_input("Press 'Enter' key to continue...")
 
 def basic_loud_scan():
 	os.system('clear')
@@ -179,15 +266,15 @@ def basic_loud_scan():
 	print("")
 	print("Thank you for using d3ad7rack's fast and easy nmap scan-selector python program!!")
 	print("")
-	raw_input("Press any key to continue...")
+	raw_input("Press 'Enter' key to continue...")
 
 def exit():
 	sys.exit()
 
 
 evade = evade_fw()
-#safe = safe_vuln_check()
-#unsafe = unsafe_vuln_check()
+safe = safe_vuln_check()
+unsafe = unsafe_vuln_check()
 
 # Main program running dialogue
 def main():  # menu goes here
@@ -206,7 +293,7 @@ def main():  # menu goes here
 		print("2\tBasic Scan, No Options")
 		print("3\tBasic, Loud Scan")
 		print("4\tFirewall Evasion Techniques")
-		print("5\tVulnerability Checking (Not working currently, Working on it)")
+		print("5\tVulnerability Checking (Safe discovery / vulnerability is working, but unsafe discovery / vulnerabiltiy scanning is not...yet")
 		print("6\tExit")
 		opt_choice = int(raw_input("Selection: "))
 		os.system('clear')
@@ -238,6 +325,7 @@ def fw_main():  # menu goes here
 
 	return
 
+# Menu for safe or unsafe vulnerability scans
 def vuln_main():  # menu goes here
 	opt_list = [safe_vulns_main,
 				unsafe_vulns_main,
@@ -247,8 +335,8 @@ def vuln_main():  # menu goes here
 	while (True):
 		os.system('clear')
 		print("SELECT OPTION: ")
-		print("1\tSafe Vulnerability Checking")
-		print("2\tUnsafe Vulnerability Checking")
+		print("1\tSafe Discovery / Vulnerability Checking")
+		print("2\tUnsafe Vulnerability Checking (Not working, currently")
 		print("3\tMain Menu")
 		opt_choice = int(raw_input("Selection: "))
 		os.system('clear')
@@ -257,27 +345,31 @@ def vuln_main():  # menu goes here
 
 	return
 
-#def safe_vulns_main():  # menu goes here
-#	opt_list = [safe.http,
-#				safe.ssh,
-#				main
-#				]
-#
-#	while (True):
-#		os.system('clear')
-#		print("SELECT OPTION: ")
-#		print("1\tHTTP(S) Vulnerabilties")
-#		print("2\tSSH Vulnerabilities")
-#		print("3\t")
-#		print("4\t")
-#		print("5\t")
-#		opt_choice = int(raw_input("Selection: "))
-#		os.system('clear')
-#		opt_choice -= 1
-#		opt_list[opt_choice]()
-#
-#	return
+# Menu for safe discovery / vulnerability scans
+def safe_vulns_main():  # menu goes here
+	opt_list = [safe.http,
+				safe.ssh,
+				safe.ftp,
+				safe.irc,
+				main
+				]
 
+	while (True):
+		os.system('clear')
+		print("SELECT OPTION: ")
+		print("1\tHTTP(S) Discovery / Vulnerabilties")
+		print("2\tSSH Discovery / Vulnerabilities")
+		print("3\t(S)FTP Discovery / Vulnerabilities")
+		print("4\tIRC Discovery / Vulnerabilities")
+		print("5\tMain Menu")
+		opt_choice = int(raw_input("Selection: "))
+		os.system('clear')
+		opt_choice -= 1
+		opt_list[opt_choice]()
+
+	return
+
+# Menu for unsafe discovery / vulnerability scans
 #def unsafe_vulns_main():  # menu goes here
 #	opt_list = [unsafe.http,
 #				unsafe.ssh,

@@ -10,11 +10,9 @@ PyMap-IT http://www.security-focused.com
 
 #TODO:
 # Classes:
-#  Class for vulnerability checking
+#  Class for vulnerability checking (Safe vulnerability / discovery done, Un-Safe vulnerability / discovery needs to be done yet)
 #
 # Scan Types:
-#  --randomize-hosts (Randomize target host order)
-#  --spoof-mac <MAC> address, prefix, or vendor name> (Spoof MAC address)
 #  --proxies <Comma-separated list of proxy URLs> (Relay TCP connections through a chain of proxies)
 #  --badsum (Send packets with bogus TCP/UDP checksums)
 #  --adler32 (Use deprecated Adler32 instead of CRC32C for SCTP checksums)
@@ -22,13 +20,14 @@ PyMap-IT http://www.security-focused.com
 # Done:
 #  -D <decoy1>[,<decoy2>][,ME][,...] (Cloak a scan with decoys)
 #  -S <IP_Address> (Spoof source address)
+#  --randomize-hosts (Randomize target host order)
+#  --spoof-mac <MAC> address, prefix, or vendor name> (Spoof MAC address)
 #  Working exit function
 
 
   by Will Frye, d3ad7rack
 """
 
-#class vuln_check:
 
 class evade_fw:
 	def decoy_address(self):
@@ -204,6 +203,15 @@ class unsafe_vuln_check:
 		print("")
 		raw_input("Press 'Enter' key to continue...")
 
+	def ssh(self):
+		print("Not done yet...")
+
+	def ftp(self):
+		print("Not done yet...")
+
+	def irc(self):
+		print("Not done yet...")
+
 def xsl_file():
 	print("When, if asked, please use your password for copying over the nmap.xsl stylesheet to your current directory, for saved xml files to work correctly")
 	os.system('sudo cp /usr/share/nmap/nmap.xsl .')
@@ -370,26 +378,28 @@ def safe_vulns_main():  # menu goes here
 	return
 
 # Menu for unsafe discovery / vulnerability scans
-#def unsafe_vulns_main():  # menu goes here
-#	opt_list = [unsafe.http,
-#				unsafe.ssh,
-#				main
-#				]
-#
-#	while (True):
-#		os.system('clear')
-#		print("SELECT OPTION: ")
-#		print("1\tHTTP(S) Vulnerabilties")
-#		print("2\tSSH Vulnerabilties")
-#		print("3\t")
-#		print("4\t")
-#		print("5\t")
-#		opt_choice = int(raw_input("Selection: "))
-#		os.system('clear')
-#		opt_choice -= 1
-#		opt_list[opt_choice]()
-#
-#	return
+def unsafe_vulns_main():  # menu goes here
+	opt_list = [unsafe.http,
+				unsafe.ssh,
+				unsafe.ftp,
+				unsafe.irc,
+				main
+				]
+
+	while (True):
+		os.system('clear')
+		print("SELECT OPTION: ")
+		print("1\tHTTP(S) Vulnerabilties")
+		print("2\tSSH Vulnerabilties")
+		print("3\t(S)FTP Discovery / Vulnerabilities")
+		print("4\tIRC Discovery / Vulnerabilities")
+		print("5\tMain Menu")
+		opt_choice = int(raw_input("Selection: "))
+		os.system('clear')
+		opt_choice -= 1
+		opt_list[opt_choice]()
+
+	return
 
 
 main()

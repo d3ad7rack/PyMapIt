@@ -20,6 +20,7 @@ import os
 #  --CME, to scan for SMBv1
 #  --g (send from source port, to bypass UDP 53 Ruleset Bypass)
 #  --parsing to get hosts and ports for reporting
+#  --add option for users to input a list of pre-identified targtes / subnets
 #
 # Done:
 #  -D <decoy1>[,<decoy2>][,ME][,...] (Cloak a scan with decoys)
